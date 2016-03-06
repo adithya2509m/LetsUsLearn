@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:float="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:id="@+id/blah"
+
+        float:fletPadding="10dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Runame"
+            android:singleLine="true"
+            android:inputType="textNoSuggestions"
+
+            android:drawableLeft="@drawable/ic_perm_identity_black_24dp"
+
+
+            android:hint="Username" />
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        float:fletPaddingBottom="10dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Rpword"
+            android:hint="Password"
+            android:singleLine="true"
+            android:drawableLeft="@drawable/ic_more_horiz_black_24dp"
+            android:inputType="textPassword" />
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        float:fletPaddingBottom="10dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Remail"
+            android:hint="Email"
+            android:singleLine="true"
+            android:drawableLeft="@drawable/ic_email_black_24dp"
+             />
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        float:fletPaddingBottom="10dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Rphone"
+            android:hint="Phone Number"
+            android:inputType="number"
+            android:singleLine="true"
+            android:nextFocusForward="@+id/circularButton2"
+            android:drawableLeft="@drawable/ic_phone_black_24dp"
+            android:imeOptions="actionDone"
+            />
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_height="1dp"
+            android:background="@color/primary_dark" />
+
+        <MultiAutoCompleteTextView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="What do you want to learn"
+            android:id="@+id/tolearn"
+            android:dropDownHeight="200dp"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+
+            android:ems="10"
+            android:completionThreshold="2"/>
+
+        <MultiAutoCompleteTextView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="What do you want to teach"
+            android:id="@+id/toteach"
+            android:dropDownHeight="200dp"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+
+            android:ems="10"
+            android:completionThreshold="2"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_height="1dp"
+            android:background="@color/primary_dark" />
+
+        <com.dd.CircularProgressButton
+            android:id="@+id/circularButton2"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:textColor="@color/cpb_white"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:textSize="18dp"
+            app:cpb_cornerRadius="48dp"
+            app:cpb_iconComplete="@drawable/ic_check_black_24dp"
+            app:cpb_iconError="@drawable/ic_cancel_black_24dp"
+            app:cpb_textIdle="Register" />
+
+
+
+
+</LinearLayout>
+</LinearLayout>
+</ScrollView>

@@ -1,0 +1,120 @@
+
+
+
+<ScrollView
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+
+            <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                xmlns:float="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                tools:context=".Login"
+                android:orientation="vertical"
+
+                >
+
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="110dp"
+                    android:src="@drawable/logo"/>
+
+
+
+
+
+
+
+
+                <!-- add some padding -->
+                <com.wrapp.floatlabelededittext.FloatLabeledEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+
+                    float:fletPadding="10dp">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:id="@+id/Uname"
+
+                        android:drawableLeft="@drawable/ic_perm_identity_black_24dp"
+
+
+                        android:hint="Username" />
+                </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+                <!-- password input -->
+                <com.wrapp.floatlabelededittext.FloatLabeledEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    float:fletPaddingBottom="10dp">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Pword"
+                        android:hint="Password"
+                        android:drawableLeft="@drawable/ic_more_horiz_black_24dp"
+                        android:inputType="textPassword"
+                        android:imeOptions="actionDone"/>
+                </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+
+                <com.dd.CircularProgressButton
+                    android:id="@+id/circularButton1"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:textColor="@color/cpb_white"
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center"
+                    android:textSize="18dp"
+                    app:cpb_cornerRadius="48dp"
+                    app:cpb_iconComplete="@drawable/ic_check_black_24dp"
+                    app:cpb_iconError="@drawable/ic_cancel_black_24dp"
+                    app:cpb_textIdle="Login" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="New?"
+                    android:id="@+id/register"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    />
+
+
+
+                <!-- change color of hint text-->
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
