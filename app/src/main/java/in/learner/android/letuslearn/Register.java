@@ -76,7 +76,7 @@ import java.util.List;
  */
 public class Register extends AppCompatActivity {
 
-    String Regsiterurl="http://172.16.10.111/reg.php";
+    String Regsiterurl="http://192.168.1.100/reg.php";
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,7 +135,7 @@ public class Register extends AppCompatActivity {
                                                             final JSONParser jParser3 = new JSONParser();
                                                             List<NameValuePair> params3 = new ArrayList<NameValuePair>();
 
-                                                            String url = "http://192.168.43.230/uvalidate.php?uname=" + Runame.getText().toString().replaceAll("\\s", "");
+                                                            String url = "http://192.168.1.100/uvalidate.php?uname=" + Runame.getText().toString().replaceAll("\\s", "");
 
                                                             jsonobject3 = jParser3.makeHttpRequest(url, "GET", params3);
 
@@ -266,7 +266,7 @@ public class Register extends AppCompatActivity {
                                                                 final JSONParser jParser4 = new JSONParser();
                                                                 List<NameValuePair> params4 = new ArrayList<NameValuePair>();
 
-                                                                String url = "http://192.168.43.230/pvalidate.php?phone=" + Rphone.getText();
+                                                                String url = "http://192.168.1.100/pvalidate.php?phone=" + Rphone.getText();
 
                                                                 jsonobject4 = jParser4.makeHttpRequest(url, "GET", params4);
 

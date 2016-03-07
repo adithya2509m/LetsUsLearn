@@ -2,6 +2,8 @@ package in.learner.android.letuslearn;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,25 +18,30 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    final String url="http://192.168.43.230/get.php";
+    final String url="http://192.168.1.100/get.php";
+
+   ArrayList<MarkerOptions> mo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        mo=new ArrayList<MarkerOptions>();
         // Obtain the192.168.43.230 SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        new LoginUser().execute();
+
 
       /*  mMap.addMarker(new MarkerOptions()
                 .position(new LatLng(lat, lang))
@@ -59,10 +66,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        new LoginUser().execute();
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
     }
 
 
@@ -104,12 +110,28 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 		JSONArray l=jsonobject.getJSONArray("learn");
 				JSONArray j=jsonobject.getJSONArray("teach");
 		for(int i=0;i<l.length();i++){
-		JSONObject temp=l.
-		mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(new Double(l.getString()), lang))
-                .title(bus.getText().toString())
-                .snippet(time));
-}
+		JSONObject temp=l.getJSONObject(i);
+            Double lat=new Double(temp.getString("lat"));
+            Double lang=new Double(temp.getString("long"));
+            String title=temp.getString("topic");
+            String info=temp.getString("uname");
+            LatLng ll=new LatLng(lat, lang);
+            MarkerOptions markerOptions=new MarkerOptions().position(ll).title(title).snippet(info);
+            mo.add(markerOptions);
+
+
+        }
+                    for(int i=0;i<j.length();i++){
+                        JSONObject temp=j.getJSONObject(i);
+                        Double lat=new Double(temp.getString("lat"));
+                        Double lang=new Double(temp.getString("long"));
+                        String title=temp.getString("topic");
+                        String info=temp.getString("uname");
+                        mMap.addMarker(new MarkerOptions()
+                                .position(new LatLng(lat, lang))
+                                .title(title)
+                                .snippet(info));
+                    }
 		
                     
 
@@ -130,6 +152,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             if(th == true){
                 nDialog.dismiss();
+                Iterator<MarkerOptions> iterator1 = mo.iterator();
+                while(iterator1.hasNext()){
+                    mMap.addMarker(iterator1.next());
+                }
+                GPSTracker g=new GPSTracker(MapsActivity.this);
+                if(g.canGetLocation()) {
+                    LatLng temp=new LatLng(g.getLatitude(),g.getLongitude());
+
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(temp));
+                }else{
+                    g.showSettingsAlert();
+                }
 /*
                 mMap.addMarker(new MarkerOptions()
                         .position(new LatLng(lat, lang))

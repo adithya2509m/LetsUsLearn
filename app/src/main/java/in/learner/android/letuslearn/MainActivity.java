@@ -38,7 +38,7 @@ import java.util.Locale;
 public class MainActivity extends ActionBarActivity {
 
 
-    final String loginurl="http://172.16.10.111/loginl.php";
+    final String loginurl="http://192.168.1.100/loginl.php";
 
     static String token="";
     static String username="";
