@@ -1,6 +1,7 @@
 package in.learner.android.letuslearn;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Looper;
@@ -14,6 +15,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.apache.http.NameValuePair;
@@ -67,6 +69,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         new LoginUser().execute();
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                String temp=marker.getSnippet();
+                String[] a=temp.split("\n");
+                Intent i=new Intent(MapsActivity.this,details.class);
+                i.putExtra("name",a[0]);
+                i.putExtra("phone",a[1]);
+                i.putExtra("mail",a[2]);
+                startActivity(i);
+                return false;
+            }
+        });
         // Add a marker in Sydney and move the camera
 
     }
@@ -97,7 +112,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             JSONObject jsonobject;
             final JSONParser jParser2 = new JSONParser();
             List<NameValuePair> params2 = new ArrayList<NameValuePair>();
-            params2.add(new BasicNameValuePair("id","2"));
+            params2.add(new BasicNameValuePair("id",MainActivity.token));
 
 
 
@@ -114,7 +129,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Double lat=new Double(temp.getString("lat"));
             Double lang=new Double(temp.getString("long"));
             String title=temp.getString("topic");
-            String info=temp.getString("uname");
+            String info=temp.getString("uname") +"\n" +  temp.getString("mobile")+"\n" +temp.getString("email");
             LatLng ll=new LatLng(lat, lang);
             MarkerOptions markerOptions=new MarkerOptions().position(ll).title(title).snippet(info);
             mo.add(markerOptions);
@@ -185,5 +200,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
     }
+
 
 }

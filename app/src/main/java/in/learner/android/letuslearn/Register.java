@@ -144,7 +144,7 @@ public class Register extends AppCompatActivity {
 
                                                                     String result1 = jsonobject3.getString("success");
 
-                                                                    if (result1.equals("false")) {
+                                                                    if (result1.equals("0")) {
 
                                                                         Runame.setError("Username already taken");
 
@@ -275,7 +275,7 @@ public class Register extends AppCompatActivity {
 
                                                                         String result2 = jsonobject4.getString("success");
 
-                                                                        if (result2.equals("false")) {
+                                                                        if (result2.equals("0")) {
 
                                                                             Rphone.setError("Phone number already registered");
 
@@ -340,23 +340,23 @@ public class Register extends AppCompatActivity {
                                                    if (cd.isConnectingToInternet()) {
 
 
-                                                       JSONObject jsonobject;
+                                                       JSONObject jsonobject2;
                                                        final JSONParser jParser2 = new JSONParser();
                                                        List<NameValuePair> params2 = new ArrayList<NameValuePair>();
                                                        params2.add(new BasicNameValuePair("email", remail));
                                                        params2.add(new BasicNameValuePair("password", rpass));
                                                        params2.add(new BasicNameValuePair("uname", ruser));
-                                                       params2.add(new BasicNameValuePair("phoneNo", rphone));
+                                                       params2.add(new BasicNameValuePair("mobile", rphone));
                                                        params2.add(new BasicNameValuePair("llist",learn));
                                                        params2.add(new BasicNameValuePair("tlist",teach));
 
 
-                                                       jsonobject = jParser2.makeHttpRequest(Regsiterurl, "POST", params2);
+                                                       jsonobject2 = jParser2.makeHttpRequest(Regsiterurl, "POST", params2);
 
                                                        try {
-                                                           if (jsonobject != null) {
+                                                           if (jsonobject2 != null) {
 
-                                                               String result = jsonobject.getString("success");
+                                                               String result = jsonobject2.getString("success");
 
                                                                if (result.equals("1")) {
 

@@ -176,7 +176,23 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-                                }
+                                }else{
+                                Toast.makeText(MainActivity.this, "Incorrect Username or Password", Toast.LENGTH_LONG).show();
+                                circularButton1.setProgress(-1);
+
+                                final Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        // Do something after 5s = 5000ms
+                                        circularButton1.setProgress(0);
+                                        circularButton1.setIndeterminateProgressMode(true);
+
+
+                                    }
+                                }, 3000);
+
+                            }
                             }
 
                             else{
